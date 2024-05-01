@@ -1,0 +1,27 @@
+# arguments for dataset
+dataset: ade20k
+nclass: 151
+crop_size: 512
+data_root: ""
+# arguments for training
+epochs: 80
+warm_epoch: 5
+fix_epoch: 50
+batch_size: 4 # per GPU x 4 GPUs
+lr: 0.001
+lr_multi: 10.0
+criterion:
+  name: CELoss
+  kwargs:
+    ignore_index: 255
+conf_thresh: 0.95
+# arguments for model
+model: deeplabv3plus
+backbone: resnet101
+multi_grid: False
+replace_stride_with_dilation: [False, False, True]
+dilations: [6, 12, 18]
+return_feature: True
+unsup_loss: SWD_FM
+sup_epochs: 50
+unsup_weight: 0.5

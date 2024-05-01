@@ -1,0 +1,27 @@
+# arguments for dataset
+dataset: pascal
+nclass: 21
+crop_size: 512
+data_root: /scratch/gilbreth/lu842/data/data/VOC
+# arguments for training
+epochs: 80
+warm_epoch: 5
+fix_epoch: 80
+batch_size: 8 # per GPU x 4 GPUs
+lr: 0.001
+lr_multi: 10.0
+criterion:
+  name: CELoss
+  kwargs:
+    ignore_index: 255
+conf_thresh: 0.90
+# arguments for model
+model: deeplabv3plus
+backbone: resnet101
+multi_grid: False
+replace_stride_with_dilation: [False, False, True]
+dilations: [6, 12, 18]
+return_feature: True
+unsup_loss: SWD_FM
+sup_epochs: 0
+unsup_weight: 1
