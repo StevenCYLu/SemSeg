@@ -1,0 +1,7 @@
+*.pth
+*.out
+__pycache__/
+*.log
+*.csv
+*.tar
+*.zip   
